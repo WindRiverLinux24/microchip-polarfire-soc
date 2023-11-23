@@ -1,0 +1,82 @@
+		Microchip Polarfire SoC FPGA - Board Support Package
+
+
+Table of Contents
+=================
+1. Supported Boards
+2. Change History
+3. BSP Features
+4. BSP Notes
+
+
+1. Supported Boards
+===================
+
+This BSP supports the following boards:
+
+  + Microchip PolarFire SoC FPGA Icicle Kit - MPFS-ICICLE-KIT-ES (MPFS250T-FCVG484EES) - RISC-V.
+
+
+2. Change History
+=================
+
+  - 2023/11 :Wind River Linux 10.23 RCPL04. Standard & Preemptrt 64bit Linux
+  - SDK : Microchip polarfire linux-6.1-mchp+fpga 2023.09
+
+
+3. BSP Features
+===============
+
+3.1 Supported Features
+----------------------
+The following BSP features are validated and supported on boards where
+the corresponding h/w features exist.
+
+  o General Platform
+	+ DMA engine
+	+ CAN engine  
+  o Bus
+	+ PCIe Gen2 Rootport
+	+ Micro USB 2.0 Hi-Speed OTG
+	+ 4 x UART (via single micro USB)
+	+ 2 x CAN
+	+ 2 x SPI
+	+ 2 x I2C
+  o Network
+	+ 2 x Gigabit Ethernet
+
+  o Memory & Storage
+	+ DDR: 2 GB LPDDR4 x 32
+	+ NOR: 1 Gbit SPI Flash memory(mt35xu02g)
+	+ 8 GB eMMC flash & SD card slot
+
+  o Misc Devices
+	+ RTC: Polarfire SoC built-in RTC
+	+ Watchdog timer
+
+
+3.2 Unsupported Features
+------------------------
+The following features are not supported and validated:
+	x Secure boot
+
+	
+4. BSP Notes
+============
+
+4.1 MPFS-ICICLE-KIT-ES
+----------------------
+
+4.1.1 Validated Board Info
+--------------------------
+This BSP is only validated in following environment. If you use this BSP
+in a different environment it may possibly have some issues.
+
+	Processor:		MPFS250T
+	Board:			MPFS250T-FCVG484EES
+	BootLoader:		U-Boot
+	BootLoader Version:	U-Boot 2022.01-linux4microchip+fpga-2023.06 (Jun 28 2023 - 07:35:32 +0000)
+
+Here is the board link:
+  https://www.microchip.com/en-us/development-tool/MPFS-ICICLE-KIT-ES
+

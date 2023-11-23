@@ -1,0 +1,214 @@
+Microchip Polarfire SoC ICICLE Kit - Board Support Package
+
+1. About this document
+======================
+This document describes common and non-hardware specific information.
+Please refer to README.hardware for hardware specific information.
+
+Dependencies
+------------
+This layer depends on the oe-core version supplied with Wind River Linux
+and the wrlinux layer.
+
+Maintenance
+-----------
+This layer is maintained by Wind River Systems, Inc.
+Contact <support@windriver.com> or your support representative for more
+information on submitting changes.
+
+Building the Microchip-polarfire-SoC layer
+------------------------------------------
+This layer should be added to bblayers.conf. This
+is done automatically when using the Wind River configure wrapper.
+
+License
+-------
+Copyright (C) 2023 Wind River Systems, Inc.
+
+Source code included in the tree for individual recipes is under the LICENSE
+stated in the associated recipe (.bb file) unless otherwise stated.
+
+The metadata is under the following license unless otherwise stated.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+2. BSP Kernel and Distros
+=========================
+
+The following table summarizes the valid Wind River Linux distros for this BSP.
+'Y' in each content cell stands for supported; 'N' stands for not supported:
+
+  +--------------+-------------+------------------+-------------------+--------------+
+  | valid/distro |   wrlinux   | wrlinux-graphics | wrlinux-installer | wrlinux-tiny |
+  +--------------+-------------+------------------+-------------------+--------------+
+  |    valid     |      Y      |        N         |         N         |       N      |
+  +--------------+-------------+------------------+-------------------+--------------+
+
+For the supported kernel type for this BSP, please check the TARGET_SUPPORTED_KTYPES
+by running 'bitbake -e virtual/kernel | grep "^TARGET_SUPPORTED_KTYPES="'.
+
+Note: The preempt-rt kernel type can be used with this BSP/Machine.
+
+
+3. Board Specific Patches
+=========================
+
+To get a list of patches applied to the kernel specific to this BSP along with
+patch descriptions use git-whatchanged on the default kernel. For example:
+
+        %> cd tmp-glibc/work-shared/<bsp_name>/kernel-source
+        %> git whatchanged <kernel_version>/standard/base..<kernel_version>/standard/<bsp_name>
+
+
+4. Boot Instructions
+====================
+
+4.1 Upading HSS & FPGA images in ICICLE kit
+===========================================
+This section provides details about how to update a new ICICLE Kit reference board with the latest HSS and FPGA image into it
+More details about hardware configuration & software details can be obtained from below microchip website
+
+https://www.microchip.com/en-us/development-tool/MPFS-ICICLE-KIT-ES
+PolarFire SoC FPGA Icicle Kit | Microchip Technology
+
+4.1.2 Install programming tool & copying image files into Host PC
+=================================================================
+The following programs are required to be installed on the host PC to set up the Icicle Kit:
+
+	* Standalone Flashpro6 programmer - Programming and Debug v2023.2
+	* Lab Programming and Debug Tools | Microchip Technology
+	* Download the latest HSS & FPGA image from the below path and extract it – ICICLE Kit reference design programming file.
+	https://github.com/polarfire-soc/icicle-kit-reference-design/releases/download/v2023.06/MPFS_ICICLE_BASE_DESIGN_2023_06.zip
+	* Download and install bmaptool from the below path. You can also do it through “sudo apt-get install bmaptools” intel/bmap-tools: BMAP Tools (github.com)
+
+4.1.3 ICICLE Kit board port connectivity
+========================================
+Please refer to the ICICLE Kit board picture given in microchip website for connector & jumper position.
+	* Plug-in the Power adapter cable to the “12V Power supply input”
+	* Micro USB for serial communication to the board (one end connects to “USB - UART Terminal” of ICICLE kit, while the otherend connects to the host PC).
+	* This port emulates two serial console ports.
+		> First port(ttyUSBx): Opens a serial communication terminal between the HSS system on the board and the host PC.
+		> Second port(ttyUSBx+1): Opens a serial communication terminal between the Linux system on the board and host PC.
+	* Connect Micro USB for transferring the image to the board (one end connects to “USB OTG” of ICICLE kit, while the other  end connects to the host PC that will transfer the image).This cable is used to expose the internal eMMC memory as a USB storage (Required only if the Linux image needs to be updated).
+	* Connect Micro USB for updating HSS image & FPGA binary to the board (one end connects to “USB Embedded Programming connector” of ICICLE kit, while the other end connects to the host PC that will program the image).
+	* Connect Ethernet cable between “GEM1” connector of ICICLE kit and to Host PC / LAN switch/router.
+
+4.1.4 Updating ICICLE kit with latest HSS & FPGA binary image
+=============================================================
+	a) Open a terminal on the Host PC and go to the directory in which FPexpress software is installed.
+		wrs@ts-1$: cd /usr/local/microchip/Program_Debug_v2023.2/Program_Debug_Tool/bin64/
+	b) Run the FPExpress application
+		wrs@ts-1:.../Program_Debug_Tool/bin64$  ./FPExpress
+	c) After running the above step, a GUI screen will pop-up as follows,
+		Select Project -> New project -> Import Flashpro express job file -> select the job file(Icicle Kit Reference Design Programming File) that you downloaded from microchip site and click “OK”.
+	d) Now you can find the detected programmer and the target device numbers on the screen
+	e) By default "Program" option is selected. Now click “RUN”. It will program the target with the chosen version of HSS and FPGA biary image
+	f) Once the programming is completed you can find the status as below.
+		"1 PROGRAMMER(S) PASSED" (displayed in a progress bar and highlighted in green colour)
+	g) Now reboot the target and you can find the updated HSS software version on the HSS console log.
+		[6.62719] PolarFire(R) SoC Hart Software Services (HSS) - version 0.99.36-v2023.06
+		MPFS HAL version 2.2.104 / DDR Driver version 0.4.023 / Mi-V IHC version 0.1.1 / BOARD=mpfs-icicle-kit-es
+		(c) Copyright 2017-2022 Microchip FPGA Embedded Systems Solutions.
+	h) Now close the FPExpess GUI application.
+
+4.2 Updating Bootloader and Linux kernel image into eMMC flash
+==============================================================
+	a) After booting the target with latest HSS image, reboot the target and press enter in HSS console as soon as you see some prints in the HSS console. If you don’t press enter within a second then it will timeout and continue to boot..
+		Log:
+		[6.224636] Please ensure that jumpers J34/J43 are correct for 1.8V MMC voltage...
+		[6.233316] Attempting to select SDCARD ... Failed
+		[6.290283] Attempting to select eMMC ... Passed
+		Press a key to enter CLI, ESC to skip
+		Timeout in 1 second
+		..
+	b) After pressing a key and entering into HSS CLI mode, run the below commands
+		>> EMMC
+		[74.465236] Selecting EMMC as boot source ...
+		[74.470444] Attempting to select eMMC ... Passed
+	c) Now run the USBDMSC command into HSS CLI console.
+		>> USBDMSC
+		[137.489666] initialize MMC
+		[137.493312] Attempting to select eMMC ... Passed
+		[137.921583] MMC - 512 byte pages, 512 byte blocks, 15273600 pages
+		Waiting for USB Host to connect... (CTRL-C to quit)
+		. 0 bytes written, 0 bytes readUSB Host connected. Waiting for disconnect... (CTRL-C to quit)
+		[139.446286] usbdmsc_service :: [WaitForUSBHost] -> [Active]
+		- 0 bytes written, 2960384 bytes read
+	d) Now the target eMMC device will be detected as a stroage device into the Host PC.
+	e) Now in the Host PC console you can verify whether the target eMMC is enumerated or not with the help of below commands,
+		wrsadmin@blr-usbts-1:.../Program_Debug_Tool/bin64$ lsblk
+		…........
+		….........
+		sda                         8:0    1   7.3G  0 disk
+		├─sda1                      8:1    1    64M  0 part
+		├─sda2                      8:2    1     8M  0 part
+		└─sda3                      8:3    1   7.2G  0 part
+	f) Now run the bmap tool and copy the LTS23 Linux image into target board eMMC.
+		wrsadmin@blr-usbts-1:~/icicle_kit$ sudo bmaptool copy wrlinux-image-small-mpfsoc-icicle-kit.wic.gz /dev/sdx
+		(Please cross verify the correct sdx number before running this command – it may be sda or sdb or sdc....)
+		wrsadmin@blr-usbts-1:~/icicle_kit$ sudo bmaptool copy wrlinux-image-small-mpfsoc-icicle-kit.wic.gz /dev/sda
+		[sudo] password for wrsadmin:
+		bmaptool: info: discovered bmap file 'wrlinux-image-small-mpfsoc-icicle-kit.wic.bmap'
+		bmaptool: info: block map format version 2.0
+		bmaptool: info: 1909200 blocks of size 4096 (7.3 GiB), mapped 44901 blocks (175.4 MiB or 2.4%)
+		bmaptool: info: copying image 'wrlinux-image-small-mpfsoc-icicle-kit.wic.gz' to block device '/dev/sda' using bmap 		   file 'wrlinux-image-small-mpfsoc-icicle-kit.wic.bmap'
+		bmaptool: info: 100% copied
+		bmaptool: info: synchronizing '/dev/sda'
+		bmaptool: info: copying time: 36.0s, copying speed 4.9 MiB/sec
+	g) Now in the ICICLE kit HSS console press ctrl+C and reboot the target.
+	h) Now the LTS23 Linux image loaded into ICICLE kit board.
+
+
+4.3 Booting ICICLE kit using SD card
+====================================
+	a) Plug-in SD card reader into a Linux PC through card reader.
+	b) On the linux machine check dmesg, lsblk to find the SD card device node(like /dev/sda or /dev/sdb etc..)
+	c) Copy the wic image and bmap file into the Linux PC (wrlinux-image-small-microchip-polarfire-soc.wic & wrlinux-image-small-microchip-polarfire-soc.wic.bmap)
+	d) Run bmap tool to flash the LTS23 image into SD card.
+		wrsadmin@blr-usbts-1:~/icicle_kit$ sudo bmaptool copy wrlinux-image-small-microchip-polarfire-soc.wic /dev/sdx
+		(Please cross verify the correct sdx number before running this command – it may be sda or sdb or sdc....)
+		[sudo] password for wrsadmin:
+		bmaptool: info: discovered bmap file 'wrlinuxnux-image-small-microchip-polarfire-soc.wic.bmap'
+		bmaptool: info: block map format version 2.0
+		bmaptool: info: 1909200 blocks of size 4096 (7.3 GiB), mapped 44901 blocks (175.4 MiB or 2.4%)
+		bmaptool: info: copying image 'wrlinux-image-small-microchip-polarfire-soc.wic' to block device '/dev/sda' using bmap file 'wrlinux-image-small-mpfsoc-icicle-kit.wic.bmap'
+		bmaptool: info: 100% copied
+		bmaptool: info: synchronizing '/dev/sda'
+		bmaptool: info: copying time: 36.0s, copying speed 4.9 MiB/sec
+	e) Now disconnect the SD card and plug-in to the ICICLE kit SD card slot.
+	f) Now reboot the target and check SD card detection in HSS logs and system booting through SD card.
+
+
+4.4 Mounting NFS rootfs
+=======================
+	a) Copy the rootfs file "wrlinux-image-small-microchip-polarfire-soc.tar.bz2" from your build folder path "./build/tmp-glibc/deploy/images/microchip-polarfire-soc/" to your NFS server exportfs path and extract it.
+
+	b) Configure the following environment variables in U-boot:
+		setenv ipaddr <ipaddr>
+		setenv gatewayip <gateway ip>
+		setenv netmask <netmask ip>
+		setenv serverip <server ip>
+		setenv netdev <eth0/eth1>  	
+		setenv rootpath <nfs server exportfs full path>
+		setenv hostname mcpf
+		setenv bootargs "root=/dev/nfs rw nfsroot=$serverip:$rootpath,tcp,v3 ip=$ipaddr:$serverip:$gatewayip:$netmask:$hostname:$netdev:off uio_pdrv_genirq.of_id=generic-uio"
+		saveenv 
+
+	c) Reboot the target, now the NFS rootfs will be mounted.
