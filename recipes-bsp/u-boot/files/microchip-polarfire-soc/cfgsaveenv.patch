@@ -1,0 +1,28 @@
+From f055e205a7b012d44b0716a71c6128091fbc1399 Mon Sep 17 00:00:00 2001
+From: "Saravanan.K.S" <saravanan.kadambathursubramaniyam@windriver.com>
+Date: Mon, 20 Nov 2023 12:51:44 +0000
+Subject: [PATCH] Enable saveenv command in U-Boot
+
+Upstream-Status: Inappropriate [configuration]
+
+Signed-off-by: Saravanan.K.S <saravanan.kadambathursubramaniyam@windriver.com>
+---
+ configs/microchip_mpfs_icicle_defconfig | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/configs/microchip_mpfs_icicle_defconfig b/configs/microchip_mpfs_icicle_defconfig
+index 13725c584e..d14cf1005f 100644
+--- a/configs/microchip_mpfs_icicle_defconfig
++++ b/configs/microchip_mpfs_icicle_defconfig
+@@ -23,3 +23,8 @@ CONFIG_MTD_UBI=y
+ CONFIG_MTD_UBI_WL_THRESHOLD=4096
+ CONFIG_MTD_UBI_BEB_LIMIT=20
+ CONFIG_OF_LIBFDT_OVERLAY=y
++CONFIG_CMD_SAVEENV=y
++CONFIG_ENV_IS_IN_DEVICE=y
++CONFIG_ENV_IS_IN_MMC=y
++CONFIG_ENV_OFFSET=0x4400
++CONFIG_ENV_SIZE=0x20000
+-- 
+2.40.0
+
