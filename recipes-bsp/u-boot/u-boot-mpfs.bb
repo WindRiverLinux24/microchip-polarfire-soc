@@ -7,8 +7,9 @@ LIC_FILES_CHKSUM = "file://Licenses/README;md5=5a7450c57ffe5ae63fd732446b988025"
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
-PV = "2022.01+git${SRCPV}"
-SRCREV = "linux4microchip+fpga-2023.06"
+PV = "2023.06+git${SRCPV}"
+# tag: linux4microchip+fpga-2023.06
+SRCREV = "7e19f9dff788025403ac6a34d9acf8736eef32ff"
 SRC_URI = "git://github.com/polarfire-soc/u-boot.git;protocol=https;nobranch=1  \
            file://${UBOOT_ENV}.txt \
            file://${HSS_PAYLOAD}.yaml \
