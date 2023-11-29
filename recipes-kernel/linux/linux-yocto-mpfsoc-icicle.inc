@@ -2,7 +2,7 @@
 # Copyright (C) 2023 Wind River Systems, Inc.
 #
 
-TARGET_SUPPORTED_KTYPES:microchip-polarfire-soc = "standard preempt-rt"
+TARGET_SUPPORTED_KTYPES:microchip-polarfire-soc = "standard"
 COMPATIBLE_MACHINE:microchip-polarfire-soc = "microchip-polarfire-soc"
 
 inherit siteinfo

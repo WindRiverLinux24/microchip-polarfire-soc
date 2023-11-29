@@ -20,7 +20,7 @@ This BSP supports the following boards:
 2. Change History
 =================
 
-  - 2023/11 :Wind River Linux 10.23 RCPL04. Standard & Preemptrt 64bit Linux
+  - 2023/11 :Wind River Linux 10.23 RCPL04. Standard 64bit Linux
   - SDK : Microchip polarfire linux-6.1-mchp+fpga 2023.09
 
 
