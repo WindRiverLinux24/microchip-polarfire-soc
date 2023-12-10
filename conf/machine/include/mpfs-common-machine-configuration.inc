@@ -10,6 +10,8 @@ KERNEL_CLASSES = "kernel-fitimage"
 KERNEL_IMAGETYPE = "fitImage"
 EXTERNAL_KERNEL_DEVICETREE = "${DEPLOY_DIR_IMAGE}/overlays"
 
+RISCV_SBI_PLAT = "generic"
+
 PREFERRED_PROVIDER_virtual/bootloader = "u-boot-mpfs"
 PREFERRED_PROVIDER_u-boot = "u-boot-mpfs"
 
