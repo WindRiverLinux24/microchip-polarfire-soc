@@ -212,3 +212,10 @@ Please refer to the ICICLE Kit board picture given in microchip website for conn
 		saveenv 
 
 	c) Reboot the target, now the NFS rootfs will be mounted.
+
+5. Microchip Polarfire board Features
+=====================================
+
+5.1 Multilib
+------------
+Multilib is not supported by this BSP.
