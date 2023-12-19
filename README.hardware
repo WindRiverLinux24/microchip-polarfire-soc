@@ -40,14 +40,12 @@ the corresponding h/w features exist.
 	+ Micro USB 2.0 Hi-Speed OTG
 	+ 4 x UART (via single micro USB)
 	+ 2 x CAN
-	+ 2 x SPI
 	+ 2 x I2C
   o Network
 	+ 2 x Gigabit Ethernet
 
   o Memory & Storage
 	+ DDR: 2 GB LPDDR4 x 32
-	+ NOR: 1 Gbit SPI Flash memory(mt35xu02g)
 	+ 8 GB eMMC flash & SD card slot
 
   o Misc Devices
@@ -59,7 +57,23 @@ the corresponding h/w features exist.
 ------------------------
 The following features are not supported and validated:
 	x Secure boot
+	x SPI
+	x NOR: 1 Gbit SPI Flash memory(mt35xu02g)
 
+3.2.1 SPI flash Errata
+----------------------
+Microprocessor subsystem cannot access system controller SPI flash
+Errata: ER0219 - PolarFire SoC FPGA: Engineering Samples (ES) Devices
+
+PolarFire SoC ES silicon has an issue in system controller between
+the analog dynamic reconfiguration interface (DRI) register block
+and SPI block that results in incorrect data during reads from the
+RXFIFO. Writes and reads to other SPI registers (for example, control,
+frame count, Tx data and direct access) work correctly.
+Due to this issue, the MSS cannot directly access the PolarFire SOC
+external flash device via the SPI controller attached to the system
+controller using DRI bus.
+This limitation will be fixed in production silicon
 	
 4. BSP Notes
 ============
