@@ -74,6 +74,12 @@ Due to this issue, the MSS cannot directly access the PolarFire SOC
 external flash device via the SPI controller attached to the system
 controller using DRI bus.
 This limitation will be fixed in production silicon
+
+3.2.2 Unclassified PCI device
+-----------------------------
+For the root port "00:00.0" will be shown as "unclassified device" in
+lspci command.
+This behaviour is expected for root port.
 	
 4. BSP Notes
 ============
