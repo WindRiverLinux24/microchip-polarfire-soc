@@ -39,7 +39,7 @@ the corresponding h/w features exist.
 	+ PCIe Gen2 Rootport
 	+ Micro USB 2.0 Hi-Speed OTG
 	+ 4 x UART (via single micro USB)
-	+ 2 x CAN
+	+ 2 x CAN (via UIO interfaces)
 	+ 2 x I2C
   o Network
 	+ 2 x Gigabit Ethernet

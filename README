@@ -219,3 +219,13 @@ Please refer to the ICICLE Kit board picture given in microchip website for conn
 5.1 Multilib
 ------------
 Multilib is not supported by this BSP.
+
+6. Microchip Polarfire linux test example
+=========================================
+
+6.1 CAN port access
+------------------------
+CAN interface can be accessed via /dev/uioX from Linux user-space.
+You can find example code and execution procedure at the below link.
+
+https://github.com/polarfire-soc/polarfire-soc-linux-examples/tree/master/can
