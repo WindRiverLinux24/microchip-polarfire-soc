@@ -34,13 +34,15 @@ the corresponding h/w features exist.
 
   o General Platform
 	+ DMA engine
-	+ CAN engine  
+	+ Boot directly from eNVM
+
   o Bus
-	+ PCIe Gen2 Rootport
 	+ Micro USB 2.0 Hi-Speed OTG
 	+ 4 x UART (via single micro USB)
 	+ 2 x CAN (via UIO interfaces)
 	+ 2 x I2C
+	+ Processor to FPGA Interconnect
+
   o Network
 	+ 2 x Gigabit Ethernet
 
@@ -59,6 +61,8 @@ The following features are not supported and validated:
 	x Secure boot
 	x SPI
 	x NOR: 1 Gbit SPI Flash memory(mt35xu02g)
+	+ PCIe Gen2 Rootport
+	x Smart debug
 
 3.2.1 SPI flash Errata
 ----------------------
