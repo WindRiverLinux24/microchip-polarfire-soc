@@ -57,7 +57,7 @@ the corresponding h/w features exist.
 
 3.2 Unsupported Features
 ------------------------
-The following features are not supported and validated:
+The following features are not supported and not validated:
 	x Secure boot
 	x SPI
 	x NOR: 1 Gbit SPI Flash memory(mt35xu02g)
