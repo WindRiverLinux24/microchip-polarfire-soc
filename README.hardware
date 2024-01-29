@@ -52,7 +52,6 @@ the corresponding h/w features exist.
 
   o Misc Devices
 	+ RTC: Polarfire SoC built-in RTC
-	+ Watchdog timer
 
 
 3.2 Unsupported Features
@@ -61,8 +60,9 @@ The following features are not supported and not validated:
 	x Secure boot
 	x SPI
 	x NOR: 1 Gbit SPI Flash memory(mt35xu02g)
-	+ PCIe Gen2 Rootport
+	x PCIe Gen2 Rootport
 	x Smart debug
+	x Watchdog timer
 
 3.2.1 SPI flash Errata
 ----------------------
