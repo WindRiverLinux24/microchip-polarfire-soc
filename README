@@ -233,6 +233,23 @@ Fit image contains the following device tree overlays. Please choose the require
 ex: for the "Mikroe Flash 5 Click Nand Flash" add-on board use
 bootm ${scriptaddr}#conf-microchip_mpfs-icicle-kit.dtb#conf-mpfs_icicle_flash5_click.dtbo
 
+4.6 Userspace DMA buffer driver
+===============================
+Microchip provides Platform DMA (pdma) linux-example application which can be used for "Transferring Large Blocks of Data between
+Linux User Space and FPGA Fabric". For allocating memory from userspace it uses udmabuf(User space mappable DMA Buffer) driver.
+udmabuf is a Linux device driver that allocates contiguous memory blocks in the kernel space as DMA buffers and makes them
+available from the user space.It is intended that these memory blocks are used as DMA buffers when a user application implements
+device driver in user space using UIO (User space I/O).
+To include this driver, follow the below steps
+
+     $ cd path_of_project6
+     $ . ./environment-setup-x86_64-wrlinuxsdk-linux
+     $ . ./oe-init-build-env
+     $ cat << _EOF >> conf/local.conf
+CUSTOMER_RECIPES:microchip-polarfire-soc = "mpfsoc-udma"
+IMAGE_INSTALL:append = ' mpfsoc-udma'
+BB_NO_NETWORK = '0'
+_EOF
 
 5. Microchip Polarfire board Features
 =====================================
