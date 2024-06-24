@@ -1,0 +1,30 @@
+From 462d93bcf2646bba797b671672a13a7f4cfeb670 Mon Sep 17 00:00:00 2001
+From: Jisheng Zhang <jszhang@kernel.org>
+Date: Thu, 11 May 2023 00:24:06 +0800
+Subject: [PATCH] riscv: Allow to enable RT
+
+Now, it's ready to enable RT on riscv.
+Upstream-Status: Backport
+
+Signed-off-by: Jisheng Zhang <jszhang@kernel.org>
+Signed-off-by: Harish H <Harish.H@windriver.com>
+Signed-off-by: Rajeshkumar Ramasamy <rajeshkumar.ramasamy@windriver.com>
+---
+ arch/riscv/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+index fbafba1f721f..11ae02fc7c8c 100644
+--- a/arch/riscv/Kconfig
++++ b/arch/riscv/Kconfig
+@@ -40,6 +40,7 @@ config RISCV
+ 	select ARCH_SUPPORTS_DEBUG_PAGEALLOC if MMU
+ 	select ARCH_SUPPORTS_HUGETLBFS if MMU
+ 	select ARCH_SUPPORTS_PAGE_TABLE_CHECK if MMU
++	select ARCH_SUPPORTS_RT
+ 	select ARCH_USE_MEMTEST
+ 	select ARCH_USE_QUEUED_RWLOCKS
+ 	select ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT if MMU
+-- 
+2.35.5
+
