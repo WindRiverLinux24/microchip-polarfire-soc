@@ -12,8 +12,8 @@ EXTERNAL_KERNEL_DEVICETREE = "${DEPLOY_DIR_IMAGE}/overlays"
 
 RISCV_SBI_PLAT = "generic"
 
-PREFERRED_PROVIDER_virtual/bootloader = "u-boot-mpfs"
-PREFERRED_PROVIDER_u-boot = "u-boot-mpfs"
+PREFERRED_PROVIDER_virtual/bootloader = "u-boot-mchp"
+PREFERRED_PROVIDER_u-boot = "u-boot-mchp"
 
 UBOOT_ENTRYPOINT = "0x80200000"
 UBOOT_DTB_LOADADDRESS = "0x8a000000"
@@ -25,9 +25,11 @@ MACHINE_EXTRA_RRECOMMENDS += " kernel-modules"
 
 IMAGE_FSTYPES += "wic wic.gz wic.bmap ext4"
 
+IMAGE_INSTALL:append = " dt-overlay-mchp"
+
 ## wic default support
 WKS_FILE_DEPENDS ?= " \
     e2fsprogs-native \
-   bmap-tools-native \
-    u-boot-mpfs \
+    bmaptool-native \
+    u-boot-mchp \
 "
