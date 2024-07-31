@@ -91,13 +91,13 @@ PolarFire SoC FPGA Icicle Kit | Microchip Technology
 =================================================================
 The following programs are required to be installed on the host PC to set up the Icicle Kit:
 
-	* Standalone Flashpro6 programmer - Programming and Debug v2023.2
+	* Standalone Flashpro6 programmer - Programming and Debug v2024.1
 	* Lab Programming and Debug Tools | Microchip Technology
 	  https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/programming-and-debug/lab
-	* Standalone Flashpro6 programmer - Programming and Debug v2023.2
-	  https://ww1.microchip.com/downloads/secure/aemdocuments/documents/fpga/media-content/fpga/v2023-2/program_debug_v2023.2_lin.zip
+	* Standalone Flashpro6 programmer - Programming and Debug v2024.1
+	  https://ww1.microchip.com/downloads/secure/aemdocuments/documents/fpga/media-content/fpga/v2024-1/program_debug_v2024.1_lin.zip
 	* Download the latest HSS & FPGA image from the below path and extract it – ICICLE Kit reference design programming file.
-	https://github.com/polarfire-soc/icicle-kit-reference-design/releases/download/v2023.06/MPFS_ICICLE_BASE_DESIGN_2023_06.zip
+	  https://github.com/polarfire-soc/icicle-kit-reference-design/releases/download/v2024.06/MPFS_ICICLE_BASE_DESIGN_2024_06.zip
 	* Install bmaptool using the command “sudo apt-get install -y bmap-tools” (intel/bmap-tools: BMAP Tools (github.com))
 
 4.1.3 ICICLE Kit board port connectivity
@@ -115,7 +115,7 @@ Please refer to the ICICLE Kit board picture given in microchip website for conn
 4.1.4 Updating ICICLE kit with latest HSS & FPGA binary image
 =============================================================
 	a) Open a terminal on the Host PC and go to the directory in which FPexpress software is installed.
-		wrs@ts-1$: cd /usr/local/microchip/Program_Debug_v2023.2/Program_Debug_Tool/bin64/
+		wrs@ts-1$: cd /usr/local/microchip/Program_Debug_v2024.1/Program_Debug_Tool/bin64/
 	b) Run the FPExpress application
 		wrs@ts-1:.../Program_Debug_Tool/bin64$  ./FPExpress
 	c) After running the above step, a GUI screen will pop-up as follows,
@@ -125,8 +125,8 @@ Please refer to the ICICLE Kit board picture given in microchip website for conn
 	f) Once the programming is completed you can find the status as below.
 		"1 PROGRAMMER(S) PASSED" (displayed in a progress bar and highlighted in green colour)
 	g) Now reboot the target and you can find the updated HSS software version on the HSS console log.
-		[6.62719] PolarFire(R) SoC Hart Software Services (HSS) - version 0.99.36-v2023.06
-		MPFS HAL version 2.2.104 / DDR Driver version 0.4.023 / Mi-V IHC version 0.1.1 / BOARD=mpfs-icicle-kit-es
+		[0.756495] PolarFire(R) SoC Hart Software Services (HSS) - version 0.99.41-v2024.06
+		MPFS HAL version 2.3.102 / DDR Driver version 0.4.024 / Mi-V IHC version 0.1.1 / BOARD=mpfs-icicle-kit-es
 		(c) Copyright 2017-2022 Microchip FPGA Embedded Systems Solutions.
 	h) Now close the FPExpess GUI application.
 

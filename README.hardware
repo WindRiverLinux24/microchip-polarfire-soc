@@ -20,8 +20,8 @@ This BSP supports the following boards:
 2. Change History
 =================
 
-  - 2023/11 :Wind River Linux 10.23 RCPL04. Standard 64bit Linux
-  - SDK : Microchip polarfire linux-6.1-mchp+fpga 2023.09
+  - 2024/07 :Wind River Linux 10.24. Standard & Preempt-RT 64bit Linux from
+             Microchip polarfire linux-6.6-mchp+fpga 2024.06
 
 
 3. BSP Features
@@ -99,7 +99,7 @@ in a different environment it may possibly have some issues.
 	Processor:		MPFS250T
 	Board:			MPFS250T-FCVG484EES
 	BootLoader:		U-Boot
-	BootLoader Version:	U-Boot 2022.01-linux4microchip+fpga-2023.06 (Jun 28 2023 - 07:35:32 +0000)
+	BootLoader Version:	U-Boot 2023.07.02-linux4microchip+fpga-2024.06 (Jul 02 2024 - 13:05:31 +0000)
 
 Here is the board link:
   https://www.microchip.com/en-us/development-tool/MPFS-ICICLE-KIT-ES
