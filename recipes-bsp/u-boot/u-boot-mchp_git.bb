@@ -5,17 +5,19 @@ require u-boot-env-mpfs.inc
 LICENSE = "GPL-2.0-or-later"
 LIC_FILES_CHKSUM = "file://Licenses/README;md5=2ca5f2c35c8cc335f0a19756634782f1"
 
-
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 PV = "v2023.07-mchp+git${SRCPV}"
 SRCREV = "a9905c1bf296c8635deb195a0c1ef81c24a1fa96"
-SRC_URI = "git://github.com/linux4microchip/u-boot-mchp.git;protocol=https;nobranch=1  \
-           file://${HSS_PAYLOAD}.yaml \
-	   file://boot.cmd \
-           file://mpfsoc.cfg \
-           file://uEnv.txt \
-          "
+SRC_URI = "git://github.com/linux4microchip/u-boot-mchp.git;protocol=https;nobranch=1"
+
+# Machine specific files
+SRC_URI:append:microchip-polarfire-soc = "\
+    file://${HSS_PAYLOAD}.yaml \
+    file://boot.cmd \
+    file://mpfsoc.cfg \
+    file://uEnv.txt \
+"
 
 DEPENDS:append = " u-boot-tools-native hss-payload-generator-native"
 DEPENDS += "coreutils-native"
