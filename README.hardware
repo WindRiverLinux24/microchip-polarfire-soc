@@ -39,7 +39,7 @@ the corresponding h/w features exist.
   o Bus
 	+ Micro USB 2.0 Hi-Speed OTG
 	+ 4 x UART (via single micro USB)
-	+ 2 x CAN (via UIO interfaces)
+	+ 2 x CAN
 	+ 2 x I2C
 	+ Processor to FPGA Interconnect
 
@@ -62,7 +62,7 @@ The following features are not supported and not validated:
 	x NOR: 1 Gbit SPI Flash memory(mt35xu02g)
 	x PCIe Gen2 Rootport
 	x Smart debug
-	x Watchdog timer
+	x SoC Watchdog timer
 
 3.2.1 SPI flash Errata
 ----------------------
