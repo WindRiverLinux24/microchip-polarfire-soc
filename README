@@ -239,16 +239,6 @@ Linux User Space and FPGA Fabric". For allocating memory from userspace it uses 
 udmabuf is a Linux device driver that allocates contiguous memory blocks in the kernel space as DMA buffers and makes them
 available from the user space.It is intended that these memory blocks are used as DMA buffers when a user application implements
 device driver in user space using UIO (User space I/O).
-To include this driver, follow the below steps
-
-     $ cd path_of_project6
-     $ . ./environment-setup-x86_64-wrlinuxsdk-linux
-     $ . ./oe-init-build-env
-     $ cat << _EOF >> conf/local.conf
-CUSTOMER_RECIPES:microchip-polarfire-soc = "mpfsoc-udma"
-IMAGE_INSTALL:append = ' mpfsoc-udma'
-BB_NO_NETWORK = '0'
-_EOF
 
 5. Microchip Polarfire board Features
 =====================================
@@ -262,7 +252,7 @@ Multilib is not supported by this BSP.
 
 6.1 CAN port access
 ------------------------
-CAN interface can be accessed via /dev/uioX from Linux user-space.
+CAN interface can be accessed via PolarFire SoC SocketCAN Interface.
 You can find example code and execution procedure at the below link.
 
 https://github.com/polarfire-soc/polarfire-soc-linux-examples/tree/master/can
