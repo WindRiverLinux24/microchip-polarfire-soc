@@ -162,7 +162,7 @@ Please refer to the ICICLE Kit board picture given in microchip website for conn
 		├─sda1                      8:1    1    64M  0 part
 		├─sda2                      8:2    1     8M  0 part
 		└─sda3                      8:3    1   7.2G  0 part
-	f) Now run the bmap tool and copy the LTS23 Linux image into target board eMMC.
+	f) Now run the bmap tool and copy the LTS24 Linux image into target board eMMC.
 		wrsadmin@blr-usbts-1:~/icicle_kit$ sudo bmaptool copy wrlinux-image-small-mpfsoc-icicle-kit.wic.gz /dev/sdx
 		(Please cross verify the correct sdx number before running this command – it may be sda or sdb or sdc....)
 		wrsadmin@blr-usbts-1:~/icicle_kit$ sudo bmaptool copy wrlinux-image-small-mpfsoc-icicle-kit.wic.gz /dev/sda
@@ -175,7 +175,7 @@ Please refer to the ICICLE Kit board picture given in microchip website for conn
 		bmaptool: info: synchronizing '/dev/sda'
 		bmaptool: info: copying time: 36.0s, copying speed 4.9 MiB/sec
 	g) Now in the ICICLE kit HSS console press ctrl+C and reboot the target.
-	h) Now the LTS23 Linux image loaded into ICICLE kit board.
+	h) Now the LTS24 Linux image loaded into ICICLE kit board.
 
 
 4.3 Booting ICICLE kit using SD card
@@ -183,7 +183,7 @@ Please refer to the ICICLE Kit board picture given in microchip website for conn
 	a) Plug-in SD card reader into a Linux PC through card reader.
 	b) On the linux machine check dmesg, lsblk to find the SD card device node(like /dev/sda or /dev/sdb etc..)
 	c) Copy the wic image and bmap file into the Linux PC (wrlinux-image-small-microchip-polarfire-soc.wic & wrlinux-image-small-microchip-polarfire-soc.wic.bmap)
-	d) Run bmap tool to flash the LTS23 image into SD card.
+	d) Run bmap tool to flash the LTS24 image into SD card.
 		wrsadmin@blr-usbts-1:~/icicle_kit$ sudo bmaptool copy wrlinux-image-small-microchip-polarfire-soc.wic /dev/sdx
 		(Please cross verify the correct sdx number before running this command – it may be sda or sdb or sdc....)
 		[sudo] password for wrsadmin:
