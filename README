@@ -217,7 +217,7 @@ Please refer to the ICICLE Kit board picture given in microchip website for conn
 
 	c) Follow the below steps to load the Linux kernel image through tftp and boot:
 		tftpboot ${scriptaddr} <tftp folder name>/fitImage-microchip-polarfire-soc.bin
-		bootm ${scriptaddr}#conf-microchip_mpfs-icicle-kit.dtb
+		bootm ${scriptaddr}#conf-mpfs-icicle-kit.dtb
 
 	d) Reboot the target, now the tftp kernel image will boot and NFS rootfs will be mounted.
 
